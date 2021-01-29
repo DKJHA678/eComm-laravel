@@ -22,5 +22,31 @@
 <style> .custom-login{
     height:500px;
     padding-top: 100px;
-} </style>
+
+}
+.img slide-img
+{
+        height: 300px !important;
+    }
+.custom-product{
+    height:900px;
+}
+
+.trainding-img{
+    height: 100px;
+}
+.trainding-item{
+    float: left;
+     width:20%;
+}
+.trainding-wrapping{
+    margin: 20px;
+}
+.detail-img{
+    height: 200px;
+}
+.search-box{
+    width: 500px !important;
+}
+</style>
 </html>
