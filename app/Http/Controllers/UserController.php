@@ -1,24 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
     function login(Request $req)
     {
-        $user=User::where(['email'=>$req->email])->first();
-        //return $user->password;
-        if(!$user || !Hash::check($req->password, $user->password))
-        {
+        $users=User::where(['email'=>$req->email])->first();
 
-        return "User Name Or Password is invalid";
+        if(!$users || !\Hash::check($req->password, $users->password))
+        {
+            return "User Name Or Password is invalid";
         }
-        else{
-            $req->session()->put('user', $user);
+        else
+        {
+            $req->session()->put('users', $users);
             return redirect('/');
 
         }

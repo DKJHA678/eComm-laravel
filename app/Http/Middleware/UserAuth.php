@@ -20,6 +20,7 @@ class UserAuth
         {
             return redirect('/');
         }
-        return $next($request);
+        else{return $next($request);}
+
     }
 }
