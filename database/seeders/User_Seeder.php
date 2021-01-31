@@ -17,9 +17,11 @@ class User_Seeder extends Seeder
     {
         \DB::table('users')->insert([
             'name'=>'Deepak Kumar Jha',
-            "email"=>"nsdvjha@gmail.com",
+            "email"=>"djha6625@gmail.com",
             "password"=>\Hash::make('123456')
+
             ]);
+
 
     }
 }

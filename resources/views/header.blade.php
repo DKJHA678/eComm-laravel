@@ -36,7 +36,7 @@ if(Session::has('users')){
           <button type="submit" class="btn btn-default">Search</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Total Cart Product({{ $total }})</a></li>
+          <li><a href="/cartlist">Total Cart Product({{ $total }})</a></li>
           @if(Session::has('users'))
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ Session::get('users')['name'] }}
