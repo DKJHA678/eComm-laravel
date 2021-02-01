@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\_products;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Cart ;
+use App\Models\Order ;
 use Illuminate\Support\Facades\DB;
 use Session;
 
@@ -65,5 +66,40 @@ class ProductController extends Controller
     {
         Cart::destroy($id);
         return redirect('/cartlist');
+    }
+    function orderNow()
+    {
+
+        $userId=Session::get('users')['id'];
+        $total= DB::table('cart')
+         ->join('_Products','cart.product_id','_Products.id')
+         ->select('_Products.*','cart.id as cart_id')
+         ->where('cart.user_id',$userId)
+         ->sum('_Products.prices');
+         return view('ordernow',['total'=>$total]);
+    }
+    function orderPlace(Request $req)
+    {
+        $userId=Session::get('users')['id'];
+        $allCart=Cart::where('user_id',$userId)->get();
+        foreach($allCart as $cart)
+        {
+            $order= new Order;
+            $order->product_id=$cart['product_id'];
+            $order->user_id=$cart['user_id'];
+            $order->address=$req->address;
+            $order->status="pending";
+            $order->payment_method=$req->payment;
+            $order->payment_status="pending";
+            $order->save();
+
+
+
+
+        }
+        Cart::where('user_id',$userId)->delete();
+        return redirect('/');
+        //return $req->input();
+
     }
 }

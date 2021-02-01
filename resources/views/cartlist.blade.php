@@ -5,6 +5,7 @@
     <div class="col-sm-10">
         <div class="trainding-wrapping">
             <h3>Cart List</h3>
+            <a class="btn btn-success" href="/ordernow">Order Now</a><br> <br>
             <div class="">
                 @foreach ($_Products as $item)
 
@@ -36,6 +37,7 @@
 
 
               @endforeach
+              <a class="btn btn-success" href="/ordernow">Ordered Now</a><br> <br>
 
             </div>
         </div>
