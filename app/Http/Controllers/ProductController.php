@@ -102,4 +102,14 @@ class ProductController extends Controller
         //return $req->input();
 
     }
+    function myOrder()
+    {
+        $userId=Session::get('users')['id'];
+     $orders= DB::table('orders')
+         ->join('_Products','orders.product_id','_Products.id')
+         ->where('orders.user_id',$userId)
+         ->get();
+         return view('myorder',['orders'=>$orders]);
+
+    }
 }

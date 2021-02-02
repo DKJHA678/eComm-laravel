@@ -14,7 +14,7 @@
             <h5>Descreption: {{ $_Products['descriptions'] }}</h5>
             <br><br>
             <form action="/add_to_cart" method="POST">
-                <input type="hidden" name="product_id" value="{{$_Products['id'] }}">
+                <input type="text" name="product_id" value="{{$_Products['id'] }}">
                 @csrf
                 <button class="btn btn-success">Add TO Cart</button>
             </form>
